@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			组件化应用构建
+			
+					组件系统是Vue的另一个重要概念，因为它是一种抽象，允许我们使用小型，自包含和通常可复用的组件构建大型应用。仔细想想，几乎任意类型
+				的应用界面都可以抽象为以个组件树
+					在vue里，一个组件本质上是以个拥有预定义选项的以个vue实例，在vue中注册组件很简单
+						
+		-->
+		<div id="app">
+			<ul>
+				<todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+			</ul>			
+		</div>
+
+		
+		<script type="text/javascript">
+			Vue.component('todo-item',{
+				//todo-item 组件现在接受一个"prop",类似于一个自定义属性，这个属性名为todo
+				props:['todo'],
+				template:'<li>{{ todo.text }}</li>'
+			})
+			
+			var app = new Vue({
+				el:'#app',
+				data:{
+					groceryList:[
+						{id:0,text:'蔬菜'},
+						{id:2,text:'水果'},
+						{id:3,text:'注意饮食'}
+					]
+				}
+			})
+			
+		</script>
+		
+	</body>
+</html>

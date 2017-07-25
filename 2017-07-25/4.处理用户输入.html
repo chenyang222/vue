@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			处理用户输入
+		-->
+		<div id="app">
+			<p>{{ message }}</p>	
+			<button v-on:click="reversMseeage">逆转消息</button>
+		</div>
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message:'Hello Vue.js'
+				},
+				methods:{
+					reversMseeage:function(){
+						this.message = this.message.split('').reverse().join('')
+					}
+				}
+			})
+		</script>
+		
+		<!--
+			v-on 指令绑定以个事件监听器，通过它调用Vue实例中定义的方法
+				
+				注意在reversMseeage方法中，更新了应用的状态，但没有触碰DOM -- 所有的DOM操作都由Vue来处理，你编写的代码不需要关注底层逻辑。
+				
+		-->
+		
+		<div id="app2">
+			<p>{{ message }}</p>
+			<input type="text" name="" id="" value="" v-model="message"/>
+		</div>
+		
+		<script type="text/javascript">
+			var app2 = new Vue({
+				el:'#app2',
+				data:{
+					message:'Hello Vue'
+				}
+			})
+		</script>
+	</body>
+</html>

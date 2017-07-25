@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			条件与循环
+		-->
+		
+		<div id="app">
+			<p v-if="seen">现在你看到我了</p>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var app = new Vue({
+				el:'#app',
+				data:{
+					seen:true
+				}
+			})
+			
+		</script>
+		<!--
+			条件
+				在控制台设置app.seen = false,文字就会消失
+				这个例子演示了我们不仅可以绑定DOM文本到数据。而且，Vue也提供一个强大的过渡效果系统，可以在Vue插入／更新／删除元素时自动应用过渡效果
+			
+		-->
+		
+		
+		<div id="app2">
+			<ul>
+				<li v-for = "todo in todos">
+					{{ todo.text }}
+				</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var app2 = new Vue({
+				el:'#app2',
+				data:{
+					todos:[
+						{text:'学习javascript'},
+						{text:'学习Vue'},
+						{text:'整个牛项目'}
+					]
+				}
+			})
+		</script>
+		
+		<!--
+			循环
+				v-for 指令可以绑定数组的数据来渲染一个项目列表
+				在控制台里，输入app2.todos.push({ text :'new one'})，你就会发现列表中添加了一个新项
+		-->
+	</body>
+</html>
