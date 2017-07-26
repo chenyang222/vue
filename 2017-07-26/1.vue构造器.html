@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+	
+			vue.js 构造器
+				
+		-->
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				//选项
+			})
+		</script>
+		<!--
+			在实例化Vue时，需要传入一个选项对象，它可以包含数据 模版 挂载元素 方法 生命周期等
+		-->
+		
+		<script type="text/javascript">
+			
+			var MyComponent = Vue.extend({
+				//扩展选项
+			})
+			//所有的MyComponent 实例 都将以预定义的扩展选项被创建
+			var myComponentInstance = new MyComponent();
+			
+		</script>
+	</body>
+</html>
+  
