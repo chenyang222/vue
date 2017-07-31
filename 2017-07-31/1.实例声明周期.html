@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+	
+			vue.js  实例生命周期	
+				
+					每个vue实例在被创建之前都要经过一系列的初始化过程。例如，实例需要配置数据观测
+				（data observer) 编译模版 挂载实例到DOM 然后在数据变化时更新DOM  在这个过程中，实
+				例也会调用一些生命周期钩子，这就给我们提供了执行自定义逻辑的机会。例如，created这个
+				钩子在实例被创建之后被调用：
+		-->
+		<script type="text/javascript">
+			var vm = new Vue({
+				data:{
+					a:1
+				},
+				created:function(){
+					//'this'指向vm实例
+					console.log('a is:'+this.a)
+				}
+			})
+			//也有其它的钩子，在实例生命周期的不同阶段调用，如mounted updated destroyed . 钩子的this 指向调用它的Vue实例。
+			//一些用户可能会问vue.js是否有“控制器”的概念，没有。 组件的自定义洛奇可以分布在这些钩子中
+		</script>
+		
+		<img src="img/lifecycle.png" alt="">
+	</body>
+</html>
+  
