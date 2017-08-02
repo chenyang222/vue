@@ -50,5 +50,41 @@
 			})
 			
 		</script>
+		
+		<!--
+				纯HTML
+					双大括号会将数据解释为纯文本，而非html.为了输出真正的html，你需要使用 v-html 指令：
+			
+		-->	
+		<div v-html="rawHtml"></div>
+		<!--
+					这个div的内容将会被替换成为属性值 rawHtml ,直接作为HTML--数据绑定会被忽略。注意，你不能使用V-html来复合局部模版，
+					因为Vue不是基于字符串的模版引擎。组件更适合担任UI重用与复合的基本单元。
+			
+		-->
+		<!--
+				属性
+					Mustache不能在HTML属性中使用，应使用v-bind指令:
+		-->
+		<div v-bind:id="dynamicId"></div>		
+		<!--
+					这对布尔值的属性也有效 －－ 如果条件被求值为false的话该属性会被移除：
+		-->
+		<button v-bind:disabled="isButtonDisabled">Button</button>
+		<!--
+				使用javascript表达式
+					迄今为止，在我们的模版中，我们一直都只绑定简单的属性键值。但实际上， 对于所有的数据绑定，Vue.js都提供了完全的javascript表达式支持。
+		-->
+		{{ number + 1 }};
+		{{ ok?'yes':'no' }};
+		{{ message.split('').reverse().join('') }};
+		<div v-bind:id="'list' + id"></div>
+		<!--
+					这些表达式会在所属Vue实例的数据作用域下作为Javascript被解析。有个限制就是，每个绑定都只能包含单个表达式，所以下面的例子都不会生效：
+		-->
+		<!-- 这是语句，不是表达式 -->
+		{{ var a = 1 }};
+		<!-- 流控制也不会生效，请使用三元表达式 -->
+		{{ if (ok) { return message } }}
 	</body>
 </html>
