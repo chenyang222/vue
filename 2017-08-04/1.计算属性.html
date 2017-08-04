@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			vue.js 计算属性
+			
+				模版内的表达式是非常便利的，但是它们实际上只用于简单的运算。在模版中放入太多的逻辑会让模版过重且难以维护。例如：
+		-->
+		<!--<div id="example">
+			{{ message.split('').reverse().join('') }}			
+		</div>	-->
+		<!--
+				在这种情况下，模版不再简单和清晰。在意识到这是反向显示message之前，你不得不再次确认第二遍。当你想要在末班中多次反向
+			显示message的时候，问题会变的更糟糕。
+			
+				这就是对于任何复杂逻辑，你都应当使用计算属性的原因。
+		-->
+		<!-- ＃基础例子 -->
+		<div id="example">
+			<p>Original message:"{{ message }}"</p>
+			<p>Computed reversed message:" {{ reversedMessage }}"</p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#example',
+				data:{
+					message:'hello'
+				},
+				computed:{
+					//a computed getter
+					reversedMessage:function(){
+						//'this' points to the vm instance
+						return this.message.split('').reverse().join('')
+					}
+				}
+			})
+		</script>
+		<!--
+				这里我们声明了一个计算属性 reversedMessage。我们提供的函数将用作属性vm.reversedMessage 的 getter。
+		-->
+		<script type="text/javascript">
+			console.log(vm.reversedMessage);	
+			vm.message = 'Goodbye';
+			console.log(vm.reversedMessag);
+		</script>		
+		<!--
+				你可以打开浏览器的控制台，自行修改例子中的vm。vm.reversedMessage的值始终取决于vm.message的值。
+			
+				你可以像绑定普通属性一样在模版中绑定计算属性。Vue知道vm.reversedMessage 依赖于vm.message ，因此
+			当vm.message发生改变时,所有依赖于vm.reversedMessage的绑定也会更新。而且最妙的是我们已经以声明的方式
+			创建了这种依赖关系:计算属性的getter是没有副作用，这使得它易于测试和推理
+		-->
+		
+	</body>
+</html>
