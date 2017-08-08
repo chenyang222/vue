@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+			}
+			
+			div.active{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box" v-bind:class="[activeClass ,errorClass]"></div>
+		
+		<script type="text/javascript">
+			
+			var demo = new Vue({
+				el:'#box',
+				data:{
+					activeClass: 'active',
+					errorClass: 'text-danger'
+				}
+			})
+			
+		</script>
+		
+		
+	</body>
+</html>

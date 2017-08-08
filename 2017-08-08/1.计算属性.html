@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			vue.js class与style绑定
+				
+				数据绑定一个常见需求是操作元素的class列表和它的内联样式。因为它们都是属性，我们
+			可以用v-bind处理它们：只需要计算出表达式最终的字符串。不过，字符串拼接麻烦又易错。因
+			此，在v-bind用于class和style时，vue.js专门增强了它。表达式的结果类型除了字符串之外，
+			还可以是对象或数组
+			
+		-->
+		
+		<!--
+			绑定HTML Class
+			
+			＃数组语法
+			
+				我们可以把一个数组传给v-bind:class,以应用一个class列表：
+			
+		-->
+		<div v-bind:class="[acriveClass,errorClass]"></div>
+		<script type="text/javascript">
+			data:{
+				activeClass:'active',
+				errorClass:'text-danger'
+			}
+		</script>
+		<!-- 渲染为： -->
+		<div class="active text-danger"></div>
+		<!-- 如果你也像根据条件切换列表中的class , 可以用三元表达式：-->
+		<div v-bind:class="[isActive ? activeClass:'',errorClass]"></div>
+		<!--
+				此例始终添加errorClass,但是只有在isActive是true时添加activeClass.不过，当有多个条件class时这样写
+			有些繁琐。可以在数组语法中使用对象语法:
+		-->
+		<div v-bind:class="[{ avtive: isActive }, errorClass]"></div>
+	</body>
+</html>
