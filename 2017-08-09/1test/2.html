@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+			}
+			
+			div.active{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="example">
+			
+			<my-component v-bind:class="{ active: isActive }"></my-component>
+			
+		</div>
+		
+				
+		<script type="text/javascript">
+			
+			Vue.component('my-component',{
+				
+				template:"<p class='foo bar'>Hi</p>",
+				
+			})
+			
+			var myVue = new Vue({
+				el:'#example',
+				data:{
+					isActive: true
+				}
+			})
+		
+		</script>
+		
+		
+	</body>
+</html>
