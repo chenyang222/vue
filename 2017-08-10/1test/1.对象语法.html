@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+			
+		<!--<div id="demo" v-bind:style="{color: activeColor , fontSize: fontSize + 'px' }">Hello world !</div>-->	
+		
+		<!--<script type="text/javascript">
+			
+			var demo = new Vue({
+				
+				el:'#demo',
+				
+				data:{
+					
+					activeColor:'red',
+					
+					fontSize: 30
+				}
+			})
+			
+		</script>-->
+		
+		<div id="demo" v-bind:style=" styleObject ">Hello world !</div>	
+		
+		<script type="text/javascript">
+			
+			var demo = new Vue({
+				
+				el:'#demo',
+				
+				data:{
+					styleObject:{
+						
+						color:'red',
+						
+						fontSize: '30px'				
+					}
+				}
+			})
+			
+		</script>		
+	</body>
+</html>

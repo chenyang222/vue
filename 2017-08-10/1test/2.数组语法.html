@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+			
+		<div id="demo" v-bind:style="[baseStyles, overridingStyles]">Hello world !</div>	
+		
+		<script type="text/javascript">
+			
+			var demo = new Vue({
+				
+				el:'#demo',
+				
+				data:{
+					baseStyles:{
+						color:'red',
+						fontSize:'30px'
+					},
+					overridingStyles:{
+						lineHeight:'60px'
+					}
+					
+				}
+			})
+			
+		</script>
+	</body>
+</html>
