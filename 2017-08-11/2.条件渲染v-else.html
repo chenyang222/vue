@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 条件渲染
+			
+				#v-else
+		-->
+		<!-- 你可以使用v-else指令来表示v-if的"else"块：-->
+		<div v-if="Math.random() > 0.5">
+			Now you see me
+		</div>
+		<div v-else>
+			Now you don't
+		</div>
+		<!-- v-else元素必须紧跟在v-if活着v-else-if元素的后面－－否则它将不会被识别 -->
+	</body>
+</html>

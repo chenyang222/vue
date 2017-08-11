@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 条件渲染
+			
+				#用key管理可复用的元素
+		-->
+		<!--
+						Vue会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染。
+					这么做，除了使Vue变的非常快之外，还有一些有用的好处。例如，如果你允许
+					用户在不同的登录方式之间切换：	
+		-->
+		<template v-if="loginType === ='username'">
+			<label>Username</label>
+			<input type="text" name="" id="" value="" placeholder="Enter your username"/>
+		</template>
+		<template v-else>
+			<label>Email</label>
+			<input type="text" name="" id="" value="" placeholder="Enter your Email address"/>
+		</template>
+		<!--
+						那么在上面的代码中切换loginType将不会清除用户已经输入的内容。因为两个
+					模版使用了相同的元素，<input>不会被替换掉－－仅仅是替换了它的placeholder
+		-->
+		<!-- 这样也不总是符合实际需求，所以Vue为你提供了一种方式来声明“这两个元素是完全独立的－－不要复用它们”。只需要添加一个具有唯一值的key属性即可 -->		
+		
+		<template v-if="loginType === ='username'">
+			<label>Username</label>
+			<input type="text" name="" id="" value="" placeholder="Enter your username" key="username-input"/>
+		</template>
+		<template v-else>
+			<label>Email</label>
+			<input type="text" name="" id="" value="" placeholder="Enter your Email address" key="email-input"/>
+		</template>		
+		<!-- 现在，每次切换时，输入框都将被重新渲染。-->
+		<!-- 注意，<label></label>元素仍然会被高效地复用，因为它们没有添加key属性。-->		
+	</body>
+</html>
