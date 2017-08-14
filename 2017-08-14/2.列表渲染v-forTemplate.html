@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 列表渲染
+				
+				v-for			
+		-->
+		<!--
+					我们用v-for指令根据一组数组的选项列表进行渲染。v-for指令需要以item in items 形式的特殊语法，items是源数据数组并且
+				item是数组元素迭代的别名。	
+		-->		
+		<!--
+					#Template v-for
+		-->
+		<ul id="example-1">
+			<template v-for="item in items">
+				<li>{{ item.msg }}</li>
+				<li class="divider"></li>
+			</template>
+		</ul>
+		<script type="text/javascript">
+			
+			var example1 = new Vue({
+				el:'#example-1',
+				data:{
+					items:[
+						{ msg:'Foo' },
+						{ msg:'Bar' }
+						
+					]
+				}
+			})
+			
+		</script>
+	</body>
+</html>

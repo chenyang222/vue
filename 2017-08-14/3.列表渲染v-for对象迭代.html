@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 列表渲染
+				
+				v-for			
+		-->
+		<!--
+					我们用v-for指令根据一组数组的选项列表进行渲染。v-for指令需要以item in items 形式的特殊语法，items是源数据数组并且
+				item是数组元素迭代的别名。	
+		-->		
+		<!--
+					#对象迭代 v-for
+					
+						你也可以用v-for通过一个对象的属性来迭代。
+		-->
+		<ul id="repeat-object">
+			<li v-for="value in object">
+				{{ value }}
+			</li>
+		</ul>
+		<script type="text/javascript">
+			
+			var example1 = new Vue({
+				el:'#repeat-object',
+				data:{
+					object:{
+						firstName:'John',
+						lastName:'Doe',
+						age:30
+					}
+				}
+			})
+			
+		</script>
+		
+		<!--		你也可以提供第二个的参数为键名	-->
+		
+		<ul id="repeat-object2">
+			<li v-for="( value,key ) in object">
+				{{ key }} : {{ value }}
+			</li>
+		</ul>
+		<script type="text/javascript">
+			
+			var example2 = new Vue({
+				el:'#repeat-object2',
+				data:{
+					object:{
+						firstName:'John',
+						lastName:'Doe',
+						age:30
+					}
+				}
+			})
+		</script>
+		
+			
+		<!--		你也可以提供第三个参数为索引	-->
+		
+		<ul id="repeat-object3">
+			<li v-for="(value,key,index) in object">
+				{{ index }} . {{ key }} : {{ value }}
+			</li>
+		</ul>
+		<script type="text/javascript">
+			
+			var example3 = new Vue({
+				el:'#repeat-object3',
+				data:{
+					object:{
+						firstName:'John',
+						lastName:'Doe',
+						age:30
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>

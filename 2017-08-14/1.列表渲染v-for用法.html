@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 列表渲染
+				
+				v-for			
+		-->
+		<!--
+					我们用v-for指令根据一组数组的选项列表进行渲染。v-for指令需要以item in items 形式的特殊语法，items是源数据数组并且
+				item是数组元素迭代的别名。	
+		-->		
+		<!--
+					＃基本用法
+		-->
+		<ul id="example-1">
+			<li v-for="item in items">
+				{{ item.message }}
+			</li>
+		</ul>
+		<script type="text/javascript">
+			var example1 = new Vue({
+				el:"#example-1",
+				data:{
+					items:[
+						{ message:'Foo' },
+						{ message:'Bar' }
+					]
+				}
+			})
+		</script>
+		<!--		在v-for块中，我们拥有对父作用域属性的完全访问权限。v-for还支持一个可选的第二个参数为当前项的索引。-->
+		<ul id="example-2">
+			<li v-for="(item,index) in items">
+				{{ parentMessage }} - {{ index }} - {{ item.message }}
+			</li>
+		</ul>
+		<script type="text/javascript">
+			var example2 = new Vue({
+				el:'#example-2',
+				data:{
+					parentMessage:'Parent',
+					items:[
+						{ message:'Foo' },
+						{ message:'Bar' }
+					]
+				}
+			})
+		</script>
+		<!--		你也可以用of替代in作为分隔符,因为它是最接近javascript迭代器的语法:	-->
+		<!--		<div v-for="item if items"></div>	-->
+	</body>
+</html>
