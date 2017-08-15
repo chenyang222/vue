@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 列表渲染
+				
+				v-for			
+		-->
+		<!--
+					我们用v-for指令根据一组数组的选项列表进行渲染。v-for指令需要以item in items 形式的特殊语法，items是源数据数组并且
+				item是数组元素迭代的别名。	
+		-->		
+		<!--
+					＃整数迭代
+					
+						v-for 也可以取整数。在这种情况下，它将重复多次模版。
+		-->
+		<div id="example">
+			<span v-for="n in 10">{{ n }}</span>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var example = new Vue({
+				
+				el:'#example',
+				
+			
+			})
+			
+		</script>
+	</body>
+</html>
