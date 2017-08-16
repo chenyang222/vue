@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 数组更新检测
+				
+		-->
+		<!--
+			
+				＃注意事项
+					
+					由于javascript的限制，Vue不能检测一下变动的数组：
+					
+					1.当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue;
+					2,当你修改数组的长度时，例如：vm.items.length = newLength		
+			
+					为了解决第一类问题，以下两种方式都可以实现和vm.item[indexOfItem] = newValue 相同的效果，同时也触发更新状态：
+					
+					Vue.set
+					//Vue.set(example.items,indexOfItem,newValue)
+					Array.prototype.splice
+					//example1.items.splice(indexOfItem,1,newValue)
+					
+					为了解决第二类问题，你可以使用splice:
+					
+						example1.items.splice(newLength)
+		-->				
+		<ul id="example">
+			<li v-for="item in items">
+				{{ item.message }}
+			</li>			
+		</ul>
+		
+		
+		<script type="text/javascript">
+			
+			var example = new Vue({
+				
+				el:'#example',
+				
+				data:{
+					items:[
+						{message:'Bar'},
+						{message:'Foo'}
+					]
+					
+				}
+				
+			
+			})
+			
+		</script>		
+	</body>
+</html>

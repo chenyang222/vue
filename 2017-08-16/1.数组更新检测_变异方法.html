@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 数组更新检测
+				
+		-->
+		<!--
+			
+				＃变异方法
+				
+					vue包含一组观察数组的变异方法，所以它们也将会触发视图更新。这些方法如下：
+					
+					push()
+					
+					pop()
+					
+					shift()
+					
+					unshift()
+					
+					splice()
+					
+					sort()
+					
+					reverse()
+					
+					用控制台，用前面的例子items数组调用变异方法				
+		-->		
+		
+		<ul id="example">
+			<li v-for="item in items">
+				{{ item.message }}
+			</li>			
+		</ul>
+		
+		
+		<script type="text/javascript">
+			
+			var example = new Vue({
+				
+				el:'#example',
+				
+				data:{
+					items:[
+						{message:'Bar'},
+						{message:'Foo'}
+					]
+					
+				}
+				
+			
+			})
+			
+		</script>
+	</body>
+</html>

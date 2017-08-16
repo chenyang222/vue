@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 数组更新检测
+				
+		-->
+		<!--
+			
+				＃重塑数组
+					
+					变异方法，顾名思义，会改变被这些方法调用的原始数组，相比之下，也有非变异方法，如
+				filter() , concat() ,slice()。这些不会改变原始数组，但总是返回一个新数组。当使用非
+				变异方法时，可以用新数组替换旧数组。
+				
+		-->				
+		
+		<!--example.items = example.items.filter(function(item){
+			return item.message.match(/Foo/)
+		})-->
+		
+		<!--
+					你可能认为这将导致Vue丢弃现有DOM并重新渲染整个列表。幸运的是，Vue实现了一些智能启发
+				式方法来最大化DOM元素重用，所以用一个含有相同元素的数组去替换原来的数组是非常高效的操作。
+			
+		-->
+		<ul id="example">
+			<li v-for="item in items">
+				{{ item.message }}
+			</li>			
+		</ul>
+		
+		
+		<script type="text/javascript">
+			
+			var example = new Vue({
+				
+				el:'#example',
+				
+				data:{
+					items:[
+						{message:'Bar'},
+						{message:'Foo'}
+					]
+					
+				}
+				
+			
+			})
+			
+		</script>		
+	</body>
+</html>
