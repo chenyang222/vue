@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 事件处理器
+				
+		-->
+		<!--
+			
+				＃方法事件处理器
+			
+					许多事件处理的逻辑都很复杂，所以直接把javascript代码写在v-on指令中是不可行的。
+				因此v-on可以接受一个定义的方法来调用。	
+				
+		-->				
+		<div id="example">
+			<button v-on:click="greet">Greet</button>			
+		</div>		
+		
+		<script type="text/javascript">
+			
+			var example = new Vue({
+				
+				el:'#example',
+				
+				data:{
+					name:'Vue.js'					
+				},
+				methods:{
+					greet:function(event){
+						alert('hello' + this.name + '!')
+						if(event){
+							alert(event.target.tagName)
+						}
+					}
+				}
+			})
+			
+			//也可以用javascript直接调用方法
+			example.greet();
+		</script>		
+	</body>
+</html>
