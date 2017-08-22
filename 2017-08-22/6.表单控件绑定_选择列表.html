@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 表单控件绑定
+				
+		-->
+		<!--
+			
+				基础用法
+				
+					你可以用v-model指令在表单控件元素上创建双向数据绑定。它会根据控件类型自动选取
+				正确的方法来更新元素。尽管有些神奇，但v-model本质上不过是语法糖，它负责监听用户的
+				输入事件以更新数据，并特别处理一些极端的例子。
+				
+					v-model会忽略所有表单元素的value checked selected特性的初始值。因为它会选择Vue
+				实例数据来作为具体的值。你应该通过javascript在组件的data选项中声明初始值。
+					
+					对于要求IME(如中文 日语 韩语等)(IME意为‘输入法’)的语言，你会发现v-model不会在
+				ime输入中得到更新。如果你也想实现更新，请使用input事件。
+				
+		-->		
+		
+		<!--
+			
+				#选择列表
+					
+		-->
+		<!-- 单选列表：-->
+		
+		<div id="example">
+			
+			<select v-model="selected">
+				<option disabled value="">请选择</option>
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<span>Selected: {{ selected }}</span>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var example = new Vue({
+				el:'#example',
+				data:{
+					selected:''
+				}
+			})
+			
+		</script>
+		
+		
+		
+		<!-- 多选列表 -->
+		
+		<div id="example2">
+			
+			<select v-model="selected" multiple style="width: 50px;">
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<br />
+			<span>Selected: {{ selected }}</span>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var example2 = new Vue({
+				el:'#example2',
+				data:{
+					selected:[]
+				}
+			})
+			
+		</script>	
+		
+		
+		<!-- 动态选项，用v-for渲染: -->
+		
+		<div id="example3">
+			
+			<select v-model="selected">
+				<option v-for="option in options" v-bind:value="option.value">
+					{{ option.text }}
+				</option>
+			</select>
+			<br />
+			<span>Selected: {{ selected }}</span>
+			
+		</div>
+		
+		<script type="text/javascript">
+			
+			var example3 = new Vue({
+				el:'#example3',
+				data:{
+					selected:'A',
+					options:[
+						{ text: 'One',value: 'A'},
+						{ text: 'Two',value: 'B'},
+						{ text: 'Three',value: 'C'}
+					]
+				}
+			})
+			
+		</script>			
+	</body>
+</html>
