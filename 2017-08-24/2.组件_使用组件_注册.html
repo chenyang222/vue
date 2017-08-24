@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		使用组件		-->
+		<!--
+			
+					#注册
+					
+						之前说过，我们可以通过以下方式创建一个Vue实例：
+							
+							new Vue({
+								el:"#example",
+								//选项
+							})
+						
+						要注册一个全局组件，你可以使用Vue.component(tagName,options)。例如：
+						
+						Vue.component('my-component',{
+							//选项 
+						})
+						
+						对于自定义标签名，Vue.js 不强制要求遵循W3C规则(小写，并且包含一个短杠)
+			
+						组件在注册之后，便可以在父实例的模块中以自定义元素<my-component></my-component>的形式使用。
+		-->
+		
+			<div id="example">
+				<my-component></my-component>
+			</div>
+			
+			<script type="text/javascript">
+				
+				Vue.component('my-component',{
+					template:'<div>A custom component!</div>'
+				})
+				
+				var example = new Vue({
+					
+					el:'#example'
+					
+				})
+			</script>
+	</body>
+</html>
