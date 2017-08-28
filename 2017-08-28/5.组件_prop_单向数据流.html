@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		prop		-->
+		<!--
+			
+					#单向数据流
+					
+						prop是单向绑定的：当父组件的属性变换时，将传导给子组件，但是不会反过来。这是为了防止
+					子组件无意修改了父组件的状态－－这会让应用的数据流难以理解。
+						另外，每次父组件更新时，子组件的所有prop都会更欣慰最新值。这意味着你不应该在子组件内
+					部改变prop。如果你这么做了，Vue会在控制台给出警告。
+						为什么我们会有修改prop中数据的冲动呢？通常是因为：
+							1.prop作为初始值传入后，子组件想把它当作局部数据来用：
+							2.prop作为初始值传入，由子组件处理成其它数据输出。
+						对这两种原因，正确的应对方式是：
+						
+							1.定义一个局部变量，并用prop的值初始化它:
+								
+								props:['initialCounter'],
+								data:function(){
+									return { counter:this.initialCounter }
+								}
+							2.定义一个计算属性,处理prop的值并返回。
+								
+								props:['size'],
+								computed:{
+									normalizedSize:function(){
+										return this.size.trim().toLowerCase()
+									}
+								}
+							
+								注意在javascript中对象和数组是引用类型，指向同一个内存空间，如果prop是一个对象或数组,
+							在子组件内部改变它会影响父组件的状态。	
+		-->
+		
+	</body>
+</html>

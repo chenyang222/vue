@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		prop		-->
+		<!--
+			
+					#使用prop传递数据
+					
+						组件实例的作用域是孤立的。这意味着不能（也不应该）在子组件的模版内直接引用父组件的数据。
+					要让子组件使用父组件的数据，我们需要通过子组件的props选项。
+					
+						子组件要显式地用props选项声明它期待获得的数据：
+					
+		-->
+		
+			<div id="example">
+				<my-component message="hello!"></my-component>
+			</div>
+			
+			<script type="text/javascript">
+				
+				Vue.component('my-component',{
+					
+					props:['message'],
+					
+					template:'<span> {{ message }} </span>'
+				})
+				
+				
+				var example = new Vue({
+					
+					el:'#example'
+					
+				})
+			</script>
+	</body>
+</html>

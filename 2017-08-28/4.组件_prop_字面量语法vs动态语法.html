@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		prop		-->
+		<!--
+			
+					#字面量语法vs动态语法
+						
+						初学者常犯的一个错误是使用字面量语法传递数值：
+						
+							传递了一个字符串 '1'
+							
+							<comp some-prop='1'></comp>
+							
+								因为它是一个字面prop，它的值是字符串'1'而不是number。如果想传递number,
+							需要使用v-bind,从而让它的值被当作javascript表达式计算:
+							
+							传递实际的number
+							
+							<comp v-bind:some-prop='1'></comp>
+						
+		-->
+		
+	</body>
+</html>

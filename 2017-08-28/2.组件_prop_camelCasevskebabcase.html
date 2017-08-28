@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		prop		-->
+		<!--
+			
+					#camelCase vs.kebab-case
+						
+						HTML特性是不区分大小写的。所以，当使用的不是字符串模版，camelCased(驼峰式)命名的prop
+					需要转换为相对应的bebab-case(短横线隔开式)命名:	
+					
+						如果你使用字符串模版，则没有这些限制。
+		-->
+		
+			<div id="example">
+				<my-component my-message="hello!"></my-component>
+			</div>
+			
+			<script type="text/javascript">
+				
+				Vue.component('my-component',{
+					
+					props:['myMessage'],
+					
+					template:'<span> {{ myMessage }} </span>'
+				})
+				
+				
+				var example = new Vue({
+					
+					el:'#example'
+					
+				})
+			</script>
+	</body>
+</html>
