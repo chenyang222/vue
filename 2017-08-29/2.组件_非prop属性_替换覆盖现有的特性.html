@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		非prop属性		-->
+		<!--
+			
+						所谓非prop属性，就是它可以直接传入组件，而不需要定义相应的prop。
+					
+						明确给组件定义prop是传参的推荐方式，但组件的作者并不总能预见到组件被使用的场景。
+					所以，组件可以接受任意传入的属性，这些属性都会被添加到组件的根元素上。
+						
+						例如，第三方组件bs-date-input,当它要和一个Bootstrap插件互操作时，需要在这个第三方组件的input
+					上添加data-3d-date-picker属性，这时可以把属性直接添加到组件上（不需要事先定义prop）:
+					
+						<bs-date-input data-3d-date-picker="true"></bs-date-input>
+						
+						添加属性 data-3d-date-picker='true'之后，它会被自动添加到bs-date-input的根元素上。
+					
+		-->
+		<!--
+				＃替换／覆盖现有的特性
+				
+					想象一下这是bs-date-input的模版：
+						
+						<input type="date" class="form-control">
+					
+					为了给该日期选择器插件增加一个特殊的主题，我们可能需要增加一个特殊的class,比如:
+					
+						<bs-date-input
+							data-3d-date-picker="true"
+							class="date-picker-theme-dark"
+						></bs-date-input>
+					
+					在这个case当中，我们定义了两个不一样的class的值：
+						
+						form-control,来自组件的模版，
+						data-picker-theme-dark,从父组件传进来的
+					
+					对于多数特性来说，传递给组件的值会覆盖组件本身设定的值。即例如传递type="large"将会覆盖type="date"且有可能破坏
+					
+					该组件！索性我们对待class和style特性会更聪明一些，这两个特性的值都会合并(merge)操作，让最终生成的值为：form-control
+					
+					date-picker-theme-dark。
+		-->
+		
+	</body>
+</html>
