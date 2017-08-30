@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		动态组件		-->
+		<!--
+					通过使用保留的<component></component>元素，动态地绑定到它的is特性,我们让多个组件可以使用同一个挂载点，
+				并动态的切换：	
+					
+		-->
+		
+		<!--<div id="example">-->
+			<!--<component v-bind:is="currentView">-->
+				<!--		组件在vm.currentview变化时变化	-->
+			<!--</component>-->
+		<!--</div>-->
+		
+		<!--<script type="text/javascript">
+			
+			Vue.component('component',{
+				
+				template:'{{ currentView }}'
+				
+			})			
+			
+			var vm = new Vue({
+				el:'#example',
+				
+				data:{
+					currentView: 'home'
+				},
+				
+				components:{
+					home:{template:'<span>123</span>'},
+					posts:{template:'<span>234</span>'},
+					archive:{template:'<span>345</span>'}
+				}
+			})
+			
+		</script>-->
+		
+		<!--		也可以直接绑定到组件对象上		-->
+		
+		
+		<div id="example">
+			<component v-bind:is="currentView">
+				<!--		组件在vm.currentview变化时变化	-->
+			</component>
+		</div>
+		
+		<script type="text/javascript">
+			
+			Vue.component('component',{
+				
+				template:'{{ currentView }}'
+				
+			})			
+			
+			var Home = {
+				template:'<p>Welcome home!</p>'
+			}
+			
+			var vm = new Vue({
+				el:'#example',
+				
+				data:{
+					currentView: Home
+				}
+				
+			})
+			
+		</script>		
+	</body>
+</html>
