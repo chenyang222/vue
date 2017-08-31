@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		＃非父子组件通信		-->
+		<!--
+				
+					有时候两个组件也需要通信（非父子关系）。在简单的场景下，可以使用一个空的Vue实例作为中央事件总线:
+					
+					var bus = new Vue()
+					
+					//触发组件A中的事件
+					
+					bus.$emit('id-selected',1)
+					
+					//在组件B创建的钩子中监听事件
+					
+					bus.$on('id-selected',function(id){
+						//...
+					})
+					
+		-->
+		
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		＃使用自定义事件的表单输入组件		-->
+		<!--
+					自定义事件可以用来创建自定义表单输入组件，使用 v-model来进行数据双向绑定。
+					
+						<input v-model="something">
+						
+					这不过是以下示例的语法糖：
+					
+						<input
+							v-bind:value="something"
+							v-on:input="something = $event.target.value">
+					
+					所以在组件中使用时，它相当于下面的简写:
+						<custom-input
+							v-bind:value="something"
+							v-on:input="something = arguments[0]">
+						</custom-input>
+					所以要让组件的v-model生效，它应该
+						接受一个value属性
+						在有新的值时触发input事件
+						
+		-->
+		
+		<div id="example">
+			
+			<currency-input v-model="price"></currency-input>
+			
+		</div>
+		
+		<script type="text/javascript">
+			
+			Vue.component('currency-input',{
+				
+				template:"\
+					<span>\
+					$\
+					<input\
+						ref='input'\
+						v-bind:value='value'\
+						v-on:input='updateValue($event.target.value)'\
+					>\
+					</span>\
+				",
+				
+				props:['value'],
+
+				methods:{
+					//不是直接更新值，而是使用此方法来对输入值进行格式化和位数限制
+					updateValue:function(value){
+						var formattedValue = value
+						//删除两侧的空格符
+						.trim()
+						//保留2小数位
+						.slice(
+							0,
+							value.indexOf('.') === -1
+								?value.length
+								:value.indexOf('.') + 3
+						)
+						//如果值不统一，手动覆盖以保持一致
+						if(formattedValue !== value){
+							this.$refs.input.value = formattedValue
+						}
+						//通过 input 事件发出数值
+						this.$emit('input',Number(formattedValue))
+					}
+				}
+			})
+			
+			new Vue({
+				
+				el:'#example'
+				
+			})
+			
+		</script>
+		<!--
+				在本例中，子组件已经和它外部完全解耦了。它所做的只是报告自己的内部事件，至于父组件是否关心则与它无关。留意到这一点很重要。
+			
+		-->
+		
+	</body>
+</html>

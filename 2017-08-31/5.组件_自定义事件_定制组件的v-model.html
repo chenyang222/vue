@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		＃定制组件的v-model		-->
+		<!--
+					
+					默认情况下，一个组件的v-model会使用value属性和input事件，但是诸如单选框 复选框之类的
+				输入类型可能把value属性用作了别的目的。model选项可以回避这样的冲突:	
+					
+				
+		-->
+		
+		<div id="example">
+			
+			<my-checkbox v-model="foo" value="some value"></my-checkbox>
+			<!--		上述代码等价于	-->
+			<my-checkbox :checked="foo" @change="val => { foo = val }" value="some value"></my-checkbox>
+		</div>
+		
+		<script type="text/javascript">
+			
+			Vue.component('my-checkbox',{
+				model:{
+					prop:'checked',
+					event:'change'
+				},
+				props:{
+					checked:Boolean,
+					value:String
+				}
+			})
+			
+		</script>
+	</body>
+</html>

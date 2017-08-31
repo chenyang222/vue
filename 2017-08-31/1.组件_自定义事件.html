@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		＃使用v-on绑定自定义事件		-->
+		<!--
+					
+					每个Vue实例都实现了事件接口(Events interface),即:
+						
+						使用$on(eventName)监听事件
+						使用$emit(eventName)触发事件
+						
+					Vue的事件系统分离自浏览器的EventTarget API。尽管它们的运行类似，但是$on 和 $emit 不是addEventListener 和 dispatchEvent的别名。
+					
+					另外，父组件可以在使用子组件的地方直接用v-on来监听子组件触发的事件。
+					
+					不能用$on侦听子组件释放的事件，而必须在模版里直接用v-on绑定，就像一下的例子：
+					
+		-->
+		
+		<div id="counter-event-example">
+			
+			<p> {{ total }}</p>
+			<button-counter v-on:increment="incrementTotal"></button-counter>
+			<button-counter v-on:increment="incrementTotal"></button-counter>
+			
+		</div>
+		
+		<script type="text/javascript">
+			
+			Vue.component('button-counter',{
+				
+				template:"<button v-on:click='incrementCounter'>{{ counter }}</button>",
+				
+				data:function(){
+					return{
+						counter:0
+					}
+				},
+				methods:{
+					incrementCounter:function(){
+						this.counter += 1
+						this.$emit('increment')
+					}
+				}
+			})
+			
+			new Vue({
+				
+				el:'#counter-event-example',
+				data:{
+					total:0
+				},
+				methods:{
+					incrementTotal:function(){
+						this.total += 1
+					}
+				}
+			})
+			
+		</script>
+		<!--
+				在本例中，子组件已经和它外部完全解耦了。它所做的只是报告自己的内部事件，至于父组件是否关心则与它无关。留意到这一点很重要。
+			
+		-->
+		
+	</body>
+</html>
