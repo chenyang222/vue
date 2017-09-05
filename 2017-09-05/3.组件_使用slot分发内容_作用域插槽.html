@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		＃使用slot分发内容	-->
+		<!--
+					在使用组件时，我们常常要像这样组合它们：
+						
+						<app>
+							<app-header></app-header>
+							<app-footer></app-footer>
+						</app>
+						
+						注意两点:
+							
+							1.<app>组件不知道它会收到什么内容。这是由使用<app>的父组件决定的。
+							2.<app>组件很可能有它自己的模版。
+								
+							为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模版。这个过
+						程被称为内容分发。Vue.js实现了一个内容分发API,参照了当前web组件规范草案，使用特殊的
+						<Slot>元素作为原始内容的插槽。
+					
+		-->
+		<!--
+				＃作用域插槽
+				
+					作用域插槽是一类特殊类型的插槽，用作使用一个（能够传递数据到）可重用模版替换已渲染元素。
+					
+					在子组件中，只需将数据传递到插槽，就像你将props传递给组件一样:
+					
+					<div class="child">
+						<slot text="hello from child"></slot>
+					</div>
+			
+						在父级中，具有特殊属性的scope的<template>元素必须存在，表示它是作用域插槽的模版，scope的值
+					对应一个临时变量名，此变量接受从子组件中传递的props对象：
+					
+					<div class="parent">
+						<child>
+							<template scope="props">
+								<span>hello from parent</span>
+								<span> {{ props.text }}</span>
+							</template>
+						</child>
+					</div>
+					
+					如果我们渲染以上结果，得到的输出会是：
+					
+					<div class="parent">
+						<div class="child">
+							<span>hello from parent</span>
+							<span>hello from child</span>
+						</div>
+					</div>
+					
+					作用域插槽更具代表性的用例是列表组件，允许组件自定义应该如何渲染列表每一项：
+					
+					<my-awesome-list :item="items">
+						作用域插槽也可以是具名的
+						<template slot="item" scope="props">
+							<li class="my-fancy-item">{{ props.text }}</li>
+						</template>
+					</my-awesome-list>
+					
+					列表组件的模版:
+					
+					<ul>
+						<slot name="item"
+						 v-for="item in items" :text="item.text">
+						 在这里写入备用内容
+						</slot>
+					</ul>
+		-->
+		
+		
+	</body>
+</html>
