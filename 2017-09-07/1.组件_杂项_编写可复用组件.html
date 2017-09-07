@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		杂项		-->
+		<!--
+				＃编写可复用组件
+				
+						在编写组件时，留意是否要复用组件是有好处的。一次性组件跟其它组件紧密耦合没关系，
+					但是可复用组件应当定义一个清晰的公开接口。
+					
+						vue组件的API来自三部分 - props,events和slots:
+							
+							Props允许外部环境传递数据给组件
+							
+							Events允许从外部环境在组件内触发副作用
+							
+							Slots允许从外部环境将额外的内容组合在组件中。
+							
+						使用v-bind和v-on的简写语法，模版的缩进清除且简介：
+							
+							<my-component
+								:foo='baz'
+								:bar='qux'
+								@event-a='doThis'
+								@event-b='doThat'
+							>
+								<img slot='icon' src='...'>
+								<p slot='main-text'>Hello!</p>	
+							</my-component>	
+		-->
+		
+	</body>
+</html>

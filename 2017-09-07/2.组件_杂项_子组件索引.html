@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		杂项		-->
+		<!--
+				＃子组件索引
+				
+					尽管有props和events,但是有时仍然需要在JavaScript中直接访问子组件。为此可以使用ref
+				为子组件指定一个索引ID。例如：
+		-->
+		
+		<div id="parent">
+			<user-profile ref="profile"></user-profile>
+		</div>
+		<script type="text/javascript">
+			
+			var parent = new Vue({ el:'#parent'})
+			//访问子组件
+			var child = parent.$refs.profile;
+			
+			//当ref和v-for一起使用时，ref是一个数组，包含相应的子组件。
+			//$refs只在组件渲染完成后才填充，并且它是非响应式的。它仅仅作为一个直接访问子组件的应急方案－－应当避免在模版或计算属性中使用$refs。
+			
+		</script>
+	</body>
+</html>

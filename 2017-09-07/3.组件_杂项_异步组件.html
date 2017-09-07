@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		杂项		-->
+		<!--
+				＃异步组件
+				
+					在大型应用中，我们可能需要将应用拆分为多个小模块，按需从服务器下载。为了让事情更简单，
+				Vue.js允许将组件定义为一个工厂函数，动态地解析组件的定义。Vue.js只在组件需要时渲染触发工
+				厂函数，并且把结果缓存起来，用于后面的再次渲染。例如：	
+				
+					Vue.component('async-example',function(resolve,reject){
+						setTimeout(function(){
+							reslove({
+								template:'<div>I am async!</div>'
+							})
+						},1000)
+					})
+					工厂函数接受一个resolve回调，在收到从服务器下载的组件定义时调用。也可以调用reject(reason)
+				指示加载失败。这里setTimeout只是为了演示。怎么获取组件完全由你决定。webpack的代码分割功能：
+				
+					Vue.component('async-webpack-example',function(resolve){
+						这个特殊的require语法告诉webpack
+						自动将编译后的代码分割成不同的块
+						这些块将通过Ajax请求自动下载。
+						require(['./my-async-component'],resolve)
+					})
+					
+					你可以使用webpoack2+es2015的语法返回一个Promise resolve函数：
+					
+					Vue.component(
+						'async-webpack-example',
+						()=> import('./my-async-component')
+					)	
+					
+					当使用局部注册时，你也可以直接提供一个返回promise的函数:
+					
+					new Vue({
+						// ...
+						components:{
+							'my-component':() => import('./my-async-component')
+						}
+					})
+					
+					Browserify不支持异步加载
+		-->
+		
+	</body>
+</html>
