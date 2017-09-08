@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		杂项		-->
+		<!--
+				＃对低开销的静态组件使用v-once
+					
+					尽管在Vue中渲染HTML很快，不过当组件中包含大量静态内容时，可以考虑使用v-once将渲染结果缓存起来，就像这样：
+					
+						Vue.component('terms-of-service',{
+							template:'\
+							<h1>Terms of Service</h1>\
+							... a lot of static content ...\
+						</div>\
+							'
+						})
+					
+		-->
+		
+	</body>
+</html>

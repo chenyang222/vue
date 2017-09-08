@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		杂项		-->
+		<!--
+				＃X-Templates
+					
+					另一种定义模版的方式是在JavaScript标签里使用text/x-template类型，并且指定一个id。例如：
+						
+						<script type="text/x-template" id="hello-world-template">
+							<p>Hello hello hello</p>
+						</script>
+						
+						Vue.component('hello-world',{
+							template:'#hello-world-template'
+						})
+					
+					这在有很多模版或者小的应用中有用，否则应该避免使用，因为它将模版和组件的其它定义隔离了。
+		-->
+		
+	</body>
+</html>
