@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		杂项		-->
+		<!--
+				＃组件命名约定
+				
+					当注册组件（或者props）时，可以使用kebab-case，camelCase,或pascalCase。
+					
+					在组件定义中
+					components:{
+							使用kebab-case形式注册
+						'kebab-cased-component':{ /* ... */ },
+						 	register using camelCase
+						'camelCasedComponent':{ /* ... */ },
+							register using PascalCase
+						'PascalCaseComponent': { /* ... */ }	
+					}
+					
+					在HTML模版中，请使用kebab-case形式：
+					
+						在HTML模版中始终使用kebab-case
+						<kebab-cased-component></kebab-cased-component>
+						<camel-cased-component></camel-cased-component>
+						<pascal-cased-component></pascal-cased-component>
+					当使用字符串模版时，可以不受HTML的case-insensitive限制。这意味实际上在模版中，你可以使用下面的方式来引用你的组件：
+					
+						kebab-case
+						camelCase或kebab-case如果组件已经被定义为camelCase
+						kebab-case,camelCase或PascalCase如果组件已经被定义为PascalCase
+						
+						components:{
+							'kebab-cased-component':{ /* ... */ },
+							camelCasedComponent:{ /* ... */ },
+							PascalcasedComponent:{ /* ... */ }
+						}
+	
+						<kebab-cased-component></kebab-cased-component>
+						
+						<camel-cased-component></camel-cased-component>
+						<camelCasedComponent></camelCasedComponent>
+						
+						<pascal-cased-component></pascal-cased-component>
+						<pascalCasedComponent></pascalCasedComponent>
+						<PascalCasedComponent></PascalCasedComponent>
+						
+					这意味着PacalCase是最通用的声明约定而kebab-case是最通用的使用约定。
+					
+					如果组件未经slot元素传递内容，你甚至可以在组件名后使用/使其自闭和：
+						
+						<my-component />
+					
+					当然，这只在字符串模版中有效。因为自闭的自定义元素是无效的HTML，浏览器原生的解析器也无法识别它
+		-->
+		
+	</body>
+</html>

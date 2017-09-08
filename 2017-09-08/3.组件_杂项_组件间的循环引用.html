@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--
+			Vue.js 组件
+				
+		-->
+		<!--
+				什么是组件？
+				
+					组件是Vue.js最强大的功能之一。组件可以扩展HTML元素，封装可重用的代码。在较高层面上，
+				组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以是原生HTML元素
+				的形式,以is特性扩展。
+			
+		-->
+		<!--		杂项		-->
+		<!--
+				＃组件间的循环引用
+				
+					假设你正在构建一个文件目录树，像在Finder或文件资源管理器中。你可能有一个tree-folder组件:
+					
+						<p>
+							<span> {{ folder.name }} </span>
+							<tree-folder-contents :children="folder.children" />
+						</p>
+					然后一个tree-folder-contents组件:
+					
+						<ul>
+							<li v-for="child in children">
+								<tree-folder v-if="child.children" :folder="child" />
+								<span v-else>{{ child.name }}</span>
+							</li>
+						</ul>
+					
+						当你仔细看时，会发现在渲染树上这两个组件同时为对方的父节点和子节点－这点是矛盾的。
+					当使用Vue.component将这两个组件注册为全局组件的时候，框架会自动为你解决这个矛盾，如
+					果你是这样做的，就不用继续往下看了。
+						然而，如果你使用诸如webpack或者Browserify之类的模块化管理工具来requiring/importing
+					组件的话，就会报错了：
+						
+						failed to mount component: template or render function not defined
+					
+						选择在tree-folder组件中告诉模块化管理系统循环引用的组件间的处理优先级，我们知道引起矛盾的子组件是
+					tree-folder-contents,所以我们在beforeCreate生命周期钩子中去注册它：
+					
+						beforeCreate:function(){
+							this.$options.components.TreeFolderContents = require('./tree-folder-contents.vue').default
+						}
+		-->
+		
+	</body>
+</html>
