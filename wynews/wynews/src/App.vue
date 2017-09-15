@@ -4,6 +4,7 @@
   	<view-box>
   	
   		<x-header
+  			class="header"
   			slot="header"
   			:left-options="{showBack:false,backText:'返回'}"
   		>
@@ -15,10 +16,8 @@
   		<scroller
   			:lock-y='true'
   		>
-  			<div>
-  				<tab	
-					class="tab"	
-				>
+  			<div class="tab"	>
+  				<tab	>
 					<tab-item selected>热点</tab-item>
 					<tab-item>最新</tab-item>
 					<tab-item>游戏</tab-item>
@@ -29,6 +28,25 @@
   			</div>	
   		</scroller>
 		
+		<swiper
+			:list="swiperList"
+			v-model="swiperIndex"
+			:loop='true'
+		>
+			
+		</swiper>
+		
+		<marquee class="my-marquee">
+			<marquee-item
+				v-for='list in marqueeList'
+			>{{ list.title }}</marquee-item>
+		</marquee>
+		
+		<panel
+			:list="dateList"
+		>
+			
+		</panel>
 		
 		 <tabbar>
 		 	<tabbar-item>
@@ -53,7 +71,7 @@
 <script>
 
 
-import {ViewBox,XHeader,Tabbar,TabbarItem,Tab,TabItem,Scroller} from 'vux';
+import {ViewBox,XHeader,Tabbar,TabbarItem,Tab,TabItem,Scroller,Swiper,Marquee,MarqueeItem,Panel} from 'vux';
 
 export default {
   name: 'app',
@@ -64,7 +82,62 @@ export default {
   	TabbarItem,
   	Tab,
   	TabItem,
-  	Scroller
+  	Scroller,
+  	Swiper,
+  	Marquee,
+  	MarqueeItem,
+  	Panel
+  },
+  created(){
+  	//http://3g.163.com/touch/jsonp/sy/recommend/0-9.html
+  	this.$jsonp('http://3g.163.com/touch/jsonp/sy/recommend/0-9.html').then( data =>{
+  		
+  		console.log(data)
+  		//return
+  		this.swiperList = data.focus.filter( item => {
+  			return item.addata === null;
+  		}).map(item =>{
+  			return{
+  				url:item.link,
+  				img:item.picInfo[0].url,
+  				title:item.title
+  			}
+  		})
+  		
+  		
+  		this.dateList = data.focus.filter( item => {
+  			return item.addata === null;
+  		}).map(item =>{
+  			return{
+  				src:item.picInfo[0].url,
+  				title:item.title,
+  				desc:item.digest,
+  				url:item.link
+  			}
+  		})
+  	});
+  	
+   	this.$jsonp('http://3g.163.com/touch/jsonp/sy/recommend/0-9.html').then( data =>{
+  		
+  		this.marqueeList = data.live.filter( item => {
+  			return item.addata === null;
+  		}).map(item =>{
+  			return{
+  				title:item.title
+  			}
+  		})
+  	}); 	
+  	
+  	
+  },
+  data(){
+  	
+  	return{
+		swiperList:[],
+		swiperIndex:1,
+		dateList:[],
+		marqueeList:[]
+		}
   }
 }
 </script>
@@ -85,7 +158,25 @@ export default {
 		overflow: hidden;
 		.tab{
 			width: 1200px;
-			position: relative;
+			margin-top: 44px;
+		}
+		.header{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			z-index: 9;
+		}
+		.weui-media-box_appmsg .weui-media-box__hd img{
+			width: 102px;
+			height: 78px;
+		}	
+		.weui-media-box_appmsg .weui-media-box__hd{
+			width: 100px;
+		}
+		.vux-marquee-box li{
+			line-height: 25px;
+  			padding-left: 5px;
 		}
 	}
 
